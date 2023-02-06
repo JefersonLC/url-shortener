@@ -2,24 +2,35 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('common/head') %> 
   <title>Url - Shortened</title>
 </head>
 
 <body>
-  <form action="/" method="POST">
-    <input type="url" name="url" id="url">
-    <% if(message.ERROR_MSSG) {%>
-      <% message.ERROR_MSSG.forEach(messag=> { %>
-        <span>
-          <%= messag %>
-        </span>
-        <% }) %>
-    <% }%>
-    <button type="submit">Enviar</button>
-  </form>
+  <main class="min-vh-100">
+    <header class="navbar bg-primary container-fluid justify-content-center">
+      <a class="navbar-brand text-white" href="#">URL SHORTENER</a>
+    </header>
+    <section class="d-flex justify-content-center align-items-center">
+      <form class="w-75 d-flex gap-3" action="/" method="POST">
+        <input class="form-control" type="url" name="url" id="url" autocomplete="off" placeholder="Enter a url. ex: https://www.website.com">
+        <% if(message.ERROR_MSSG) {%>
+          <% message.ERROR_MSSG.forEach(messag=> { %>
+            <span>
+              <%= messag %>
+            </span>
+            <% }) %>
+        <% }%>
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </form>
+    </section>
+    <footer class="fixed-bottom navbar bg-primary container-fluid justify-content-center">
+      <p class="text-white" href="#">
+        by Jeferson Limay - <%= new Date().getFullYear() %>
+      </p>
+    </footer>
+  </main>
+  
   <% if(message.SUCCESS_MSSG) {%>
     <% message.SUCCESS_MSSG.forEach(messag=> { %>
       <span>
