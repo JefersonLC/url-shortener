@@ -8,7 +8,7 @@ const SUI = require('short-unique-id');
 const { DB_URL, DOMAIN, SECRET } = require('./config');
 
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 const URL_SCHEMA = Yup.string().url().required();
 const generateId = new SUI({ length: 8 });
