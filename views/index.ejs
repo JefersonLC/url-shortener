@@ -3,26 +3,40 @@
 
 <head>
   <%- include('common/head') %> 
+  <link rel="stylesheet" href="css/style.css">
   <title>Url - Shortened</title>
 </head>
 
 <body>
-  <main class="min-vh-100">
-    <header class="navbar bg-primary container-fluid justify-content-center">
+  <main>
+    <header class="navbar fixed-top bg-primary container-fluid justify-content-center">
       <a class="navbar-brand text-white" href="#">URL SHORTENER</a>
     </header>
-    <section class="d-flex justify-content-center align-items-center">
-      <form class="w-75 d-flex gap-3" action="/" method="POST">
-        <input class="form-control" type="url" name="url" id="url" autocomplete="off" placeholder="Enter a url. ex: https://www.website.com">
-        <% if(message.ERROR_MSSG) {%>
-          <% message.ERROR_MSSG.forEach(messag=> { %>
-            <span>
-              <%= messag %>
-            </span>
-            <% }) %>
-        <% }%>
+    <section class="section-layout">
+      <% if(message.SUCCESS_MSSG) {%>
+        <% message.SUCCESS_MSSG.forEach(messag=> { %>
+          <div class="alert alert-success">
+            <h4 class="alert-heading">Success!</h4>
+              <p>Your new link:</p>
+              <hr>
+            <p class="mb-0"><%= messag %></p>
+          </div>
+          <% }) %>
+      <% }%>
+      <form class="d-flex justify-content-center gap-3 form-layout" action="/" method="POST">
+        <div class="w-100">
+          <input class="form-control" type="url" name="url" id="url" autocomplete="off" placeholder="Enter a url. ex: https://www.website.com">
+        </div>
         <button class="btn btn-primary" type="submit">Enviar</button>
       </form>
+      <% if(message.ERROR_MSSG) {%>
+        <% message.ERROR_MSSG.forEach(messag=> { %>
+          <div class="alert alert-danger">
+            
+            <%= messag %>
+          </div>
+        <% }) %>
+      <% }%>
     </section>
     <footer class="fixed-bottom navbar bg-primary container-fluid justify-content-center">
       <p class="text-white" href="#">
@@ -30,14 +44,6 @@
       </p>
     </footer>
   </main>
-  
-  <% if(message.SUCCESS_MSSG) {%>
-    <% message.SUCCESS_MSSG.forEach(messag=> { %>
-      <span>
-        <%= messag %>
-      </span>
-      <% }) %>
-  <% }%>
 </body>
 
 </html>
