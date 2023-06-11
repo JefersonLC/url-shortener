@@ -2,14 +2,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import SUI from 'short-unique-id';
 
+interface FormValues {
+  url: string;
+}
+
 export default function Home() {
   const sui = new SUI({ length: 6 });
 
-  interface Form {
-    url: string;
-  }
-
-  const initialValues: Form = {
+  const initialValues: FormValues = {
     url: '',
   };
 
@@ -20,7 +20,7 @@ export default function Home() {
       .typeError('Debe ser texto'),
   });
 
-  const handleSubmit = (values: Form) => {
+  const handleSubmit = (values: FormValues) => {
     console.log({ id: sui(), ...values });
   };
 
@@ -31,7 +31,11 @@ export default function Home() {
       validationSchema={createUrl}
     >
       <Form>
-        <Field name='url' placeholder='URL - Ex: http://your.site.com' />
+        <Field
+          name='url'
+          placeholder='URL - Ex: http://your.site.com'
+          autoComplete='off'
+        />
         <ErrorMessage name='url' />
 
         <button type='submit'>OK</button>
