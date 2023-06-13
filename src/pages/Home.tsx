@@ -1,65 +1,25 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import SUI from 'short-unique-id';
-import { object, string } from 'yup';
-
-interface FormValues {
-  url: string;
-}
+import UrlForm from '../components/UrlForm';
+import SadFace from '../icons/SadFace';
 
 export default function Home() {
-  const sui = new SUI({ length: 6 });
-
-  const initialValues: FormValues = {
-    url: '',
-  };
-
-  const createUrl = object({
-    url: string()
-      .url('Formato inválido')
-      .required('Campo requerido')
-      .typeError('Debe ser texto'),
-  });
-
-  const handleSubmit = (values: FormValues) => {
-    console.log({ id: sui(), ...values });
-  };
-
   return (
-    <main className='min-h-screen bg-slate-800 flex flex-col px-4'>
+    <main
+      className={`min-h-screen bg-slate-800 flex flex-col px-4 sm:px-24
+      md:px-48 lg:px-60 xl:px-80 2xl:px-[30rem]`}
+    >
       <section className='flex-grow basis-0 flex flex-col justify-end'>
-        <p className='text-lg text-slate-50'>Enter your URL:</p>
-        <Formik
-          onSubmit={handleSubmit}
-          initialValues={initialValues}
-          validationSchema={createUrl}
-        >
-          <Form>
-            <div className='mb-3 mt-2'>
-              <Field
-                name='url'
-                placeholder='Ex: http://your.site.com'
-                autoComplete='off'
-                className='w-full p-3 rounded-md'
-              />
-              <ErrorMessage
-                name='url'
-                component='span'
-                className='block mt-1 text-sm text-rose-600'
-              />
-            </div>
-            <div className='flex justify-center'>
-              <button
-                type='submit'
-                className='bg-emerald-400 px-3 py-1 mx-auto rounded-lg'
-              >
-                Generate link
-              </button>
-            </div>
-          </Form>
-        </Formik>
+        <p className='text-lg 2xl:text-2xl text-slate-50'>Enter your URL:</p>
+        <UrlForm />
       </section>
-      <section className='flex-grow basis-0'>
-        <p>Aquì va el nuevo link</p>
+      <section className='flex-grow basis-6'>
+        <div className='p-4 mt-10 border-dashed rounded-xl border-4 border-slate-400'>
+          <p className='text-center text-slate-400 text-lg 2xl:text-2xl mb-4'>
+            If you try to generate a url?
+          </p>
+          <span className='[&>svg]:fill-slate-400 flex justify-center'>
+            <SadFace />
+          </span>
+        </div>
       </section>
     </main>
   );
