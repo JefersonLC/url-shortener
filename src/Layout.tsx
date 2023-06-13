@@ -20,9 +20,10 @@ export default function Layout({ children }: LayoutProps) {
           <a
             href='https://github.com/JefersonLC'
             target='_blank'
-            className={`relative hover:text-amber-500 pr-6 pl-4 mx-1 [&>span]:w-0 [&>span]:hover:w-full 
-            after:absolute after:content-["<"] after:left-0 after:text-slate-500
-            before:absolute before:content-["/>"] before:right-0 before:text-slate-500`}
+            className={`relative hover:text-amber-500 pr-6 pl-4 mx-1 hover:after:text-rose-500
+            hover:before:text-rose-500  [&>span]:w-0 [&>span]:hover:w-full after:absolute
+            after:content-["<"] after:left-0 after:text-slate-500 before:absolute
+            before:content-["/>"] before:right-0 before:text-slate-500`}
           >
             @JefersonLC
             <span className='absolute bottom-0 left-0 h-[1px] bg-amber-500 transition-all' />
