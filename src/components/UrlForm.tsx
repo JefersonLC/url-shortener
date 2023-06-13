@@ -1,12 +1,16 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useContext } from 'react';
 import SUI from 'short-unique-id';
 import { object, string } from 'yup';
+import { UrlContext } from '../context/UrlContext';
 
 interface FormValues {
   url: string;
 }
 
 export default function UrlForm() {
+  const { newUrl } = useContext(UrlContext);
+
   const sui = new SUI({ length: 6 });
 
   const initialValues: FormValues = {
@@ -20,8 +24,9 @@ export default function UrlForm() {
       .typeError('Debe ser texto'),
   });
 
-  const handleSubmit = (values: FormValues) => {
-    console.log({ id: sui(), ...values });
+  const handleSubmit = async (values: FormValues) => {
+    const response = await newUrl({ id: sui(), ...values });
+    console.log(response);
   };
 
   return (
