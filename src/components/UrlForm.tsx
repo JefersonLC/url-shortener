@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import SUI from 'short-unique-id';
 import { object, string } from 'yup';
 import { UrlContext } from '../context/UrlContext';
+import { UrlData } from '../context/UrlContext.d';
 
 interface FormValues {
   url: string;
 }
 
 export default function UrlForm() {
-  const { newUrl } = useContext(UrlContext);
+  const { newUrl, handleLoad, getUrl } = useContext(UrlContext);
 
   const sui = new SUI({ length: 6 });
 
@@ -25,8 +26,18 @@ export default function UrlForm() {
   });
 
   const handleSubmit = async (values: FormValues) => {
-    const response = await newUrl({ id: sui(), ...values });
-    console.log(response);
+    handleLoad(true);
+
+    const id = sui();
+
+    const { status } = await newUrl({ id, ...values });
+
+    if (status === 201 /*created*/) {
+      const response = await getUrl<UrlData>(id);
+      console.log(response);
+    }
+
+    handleLoad(false);
   };
 
   return (
