@@ -19,9 +19,9 @@ export default function UrlForm() {
 
   const createUrl = object({
     url: string()
-      .url('Formato inválido')
-      .required('Campo requerido')
-      .typeError('Debe ser texto'),
+      .url('Invalid format')
+      .required('Required')
+      .typeError('Must be text'),
   });
 
   const handleSubmit = async (values: FormValues) => {
