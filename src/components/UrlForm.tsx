@@ -1,16 +1,15 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useContext } from 'react';
 import SUI from 'short-unique-id';
 import { object, string } from 'yup';
-import { UrlContext } from '../context/UrlContext';
 import { UrlData } from '../context/UrlContext.d';
+import { useUrl } from '../hooks/useUrl';
 
 interface FormValues {
   url: string;
 }
 
 export default function UrlForm() {
-  const { newUrl, handleLoad, getUrl } = useContext(UrlContext);
+  const { newUrl, handleLoad, getUrl } = useUrl();
 
   const sui = new SUI({ length: 6 });
 
