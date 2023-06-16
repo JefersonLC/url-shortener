@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { createContext } from 'react';
 import { supabase } from '../supabase';
-import { NewUrl, ProviderProps } from './UrlContext.d';
+import { ContextValues, NewUrl, ProviderProps } from './UrlContext.d';
 
-const newUrl = async (values: NewUrl) => {
-  const response = await supabase.from('short-links').insert(values);
-  return response;
-};
-
-export const UrlContext = createContext({ newUrl });
+export const UrlContext = createContext<ContextValues>(null!);
 
 export default function UrlContextProvider(props: ProviderProps) {
+  async function newUrl(values: NewUrl) {
+    const response = await supabase.from('short-links').insert(values);
+    return response;
+  }
+
   return (
     <UrlContext.Provider value={{ newUrl }}>
       {props.children}
