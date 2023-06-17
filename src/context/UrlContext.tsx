@@ -28,8 +28,14 @@ export default function UrlContextProvider(props: ProviderProps) {
     setIsLoading(state);
   }
 
+  function handleUrl(newUrl: string) {
+    setUrl(newUrl);
+  }
+
   return (
-    <UrlContext.Provider value={{ newUrl, handleLoad, getUrl, url, isLoading }}>
+    <UrlContext.Provider
+      value={{ newUrl, handleLoad, getUrl, url, isLoading, handleUrl }}
+    >
       {props.children}
     </UrlContext.Provider>
   );

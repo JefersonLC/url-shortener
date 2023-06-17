@@ -18,6 +18,7 @@ export interface ContextValues {
     status: number;
     data: Interface;
   }>;
+  handleUrl: (newUrl: string) => void;
   url: string;
   isLoading: boolean;
 }
