@@ -9,9 +9,11 @@ interface FormValues {
 }
 
 export default function UrlForm() {
-  const { newUrl, handleLoad, getUrl } = useUrl();
+  const { newUrl, handleLoad, handleUrl, getUrl } = useUrl();
 
   const sui = new SUI({ length: 6 });
+
+  const domain: string = import.meta.env.VITE_DOMAIN;
 
   const initialValues: FormValues = {
     url: '',
@@ -27,13 +29,13 @@ export default function UrlForm() {
   const handleSubmit = async (values: FormValues) => {
     handleLoad(true);
 
-    const id = sui();
+    const id: string = sui();
 
     const { status } = await newUrl({ id, ...values });
 
     if (status === 201 /*created*/) {
-      const response = await getUrl<UrlData>(id);
-      console.log(response);
+      const { data } = await getUrl<UrlData>(id);
+      handleUrl(domain + data.id);
     }
 
     handleLoad(false);
