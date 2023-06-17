@@ -1,9 +1,14 @@
+import { Suspense, lazy } from 'react';
 import UrlForm from '../components/UrlForm';
 import { useUrl } from '../hooks/useUrl';
-import SadFace from '../icons/SadFace';
+
+const LoadingUrl= lazy(() => import('../components/LoadingUrl'));
+const WithOutUrl = lazy(() => import('../components/WithOutUrl'));
+const WithUrl = lazy(() => import('../components/WithUrl'));
+
 
 export default function Home() {
-  const { url } = useUrl();
+  const { url, isLoading } = useUrl();
 
   return (
     <main
@@ -16,18 +21,15 @@ export default function Home() {
       </section>
       <section className='flex-grow basis-6'>
         <div className='p-4 mt-10 border-dashed rounded-xl border-4 border-slate-400'>
-          {url ? (
-            'xd'
-          ) : (
-            <>
-              <p className='text-center text-slate-400 text-lg 2xl:text-2xl mb-4'>
-                If you try to generate a url?
-              </p>
-              <span className='[&>svg]:fill-slate-400 flex justify-center'>
-                <SadFace />
-              </span>
-            </>
-          )}
+          <Suspense fallback={<LoadingUrl>Loading...</LoadingUrl>}>
+            {
+              isLoading 
+                ? <LoadingUrl>Generating Url...</LoadingUrl>
+                : url 
+                  ? <WithUrl>{url}</WithUrl>
+                  : <WithOutUrl />
+            }
+          </Suspense>
         </div>
       </section>
     </main>
