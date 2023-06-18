@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import UrlForm from '../components/UrlForm';
 import { useUrl } from '../hooks/useUrl';
 
-const LoadingUrl= lazy(() => import('../components/LoadingUrl'));
+const LoadingUrl = lazy(() => import('../components/LoadingUrl'));
 const WithOutUrl = lazy(() => import('../components/WithOutUrl'));
 const WithUrl = lazy(() => import('../components/WithUrl'));
 
@@ -23,9 +23,9 @@ export default function Home() {
         <div className='p-4 mt-10 border-dashed rounded-xl border-4 border-slate-400'>
           <Suspense fallback={<LoadingUrl>Loading...</LoadingUrl>}>
             {
-              isLoading 
+              isLoading
                 ? <LoadingUrl>Generating Url...</LoadingUrl>
-                : url 
+                : url
                   ? <WithUrl>{url}</WithUrl>
                   : <WithOutUrl />
             }
