@@ -2,6 +2,8 @@ import { Suspense, lazy } from 'react';
 import { Route, Switch } from 'wouter';
 import Layout from './Layout';
 import UrlContextProvider from './context/UrlContext';
+import Fallback from './components/Fallback';
+
 const Home = lazy(() => import('./pages/Home'));
 const Redirect = lazy(() => import('./pages/Redirect'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -10,15 +12,13 @@ function App() {
   return (
     <UrlContextProvider>
       <Layout>
-        <Switch>
-          <Suspense fallback={<div className='pt-40'>Skeleton...</div>}>
+        <Suspense fallback={<Fallback />}>
+          <Switch>
             <Route path='/' component={Home} />
-          </Suspense>
-          <Suspense fallback={<div className='pt-40'>Cargando...</div>}>
             <Route path='/:id' component={Redirect} />
             <Route component={NotFound} />
-          </Suspense>
-        </Switch>
+          </Switch>
+        </Suspense>
       </Layout>
     </UrlContextProvider>
   );
