@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { DotSpinner } from '@uiball/loaders'
 import { useEffect } from 'react'
 import { useRoute } from 'wouter'
