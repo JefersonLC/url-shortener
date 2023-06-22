@@ -1,4 +1,4 @@
-import SadFace from '../icons/SadFace';
+import SadFace from '../icons/SadFace'
 
 export default function WithOutUrl() {
   return (
@@ -10,5 +10,5 @@ export default function WithOutUrl() {
         <SadFace />
       </span>
     </>
-  );
+  )
 }

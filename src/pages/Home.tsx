@@ -1,14 +1,13 @@
-import { Suspense, lazy } from 'react';
-import UrlForm from '../components/UrlForm';
-import { useUrl } from '../hooks/useUrl';
+import { Suspense, lazy } from 'react'
+import UrlForm from '../components/UrlForm'
+import { useUrl } from '../hooks/useUrl'
 
-const LoadingUrl = lazy(() => import('../components/LoadingUrl'));
-const WithOutUrl = lazy(() => import('../components/WithOutUrl'));
-const WithUrl = lazy(() => import('../components/WithUrl'));
-
+const LoadingUrl = lazy(() => import('../components/LoadingUrl'))
+const WithOutUrl = lazy(() => import('../components/WithOutUrl'))
+const WithUrl = lazy(() => import('../components/WithUrl'))
 
 export default function Home() {
-  const { url, isLoading } = useUrl();
+  const { url, isLoading } = useUrl()
 
   return (
     <main
@@ -22,7 +21,7 @@ export default function Home() {
       <section className='flex-grow basis-6'>
         <div className='p-4 mt-10 border-dashed rounded-xl border-4 border-slate-400'>
           <Suspense fallback={<LoadingUrl>Loading...</LoadingUrl>}>
-            {
+          {
               isLoading
                 ? <LoadingUrl>Generating Url...</LoadingUrl>
                 : url
@@ -33,5 +32,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  );
+  )
 }

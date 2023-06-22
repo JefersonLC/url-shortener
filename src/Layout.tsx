@@ -1,5 +1,5 @@
 interface LayoutProps {
-  children: JSX.Element;
+  children: JSX.Element
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -31,5 +31,5 @@ export default function Layout({ children }: LayoutProps) {
         </p>
       </footer>
     </>
-  );
+  )
 }

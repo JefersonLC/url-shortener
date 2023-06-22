@@ -9,5 +9,5 @@ export default function WithUrl({ children }: { children: string }) {
         {/* TODO: Add smiley face icon*/}
       </span>
     </>
-  );
+  )
 }

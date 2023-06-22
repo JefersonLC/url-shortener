@@ -1,4 +1,4 @@
-import { DotWave } from '@uiball/loaders';
+import { DotWave } from '@uiball/loaders'
 
 export default function LoadingUrl({ children }: { children: string }) {
   return (
@@ -10,5 +10,5 @@ export default function LoadingUrl({ children }: { children: string }) {
         <DotWave size={70} color='#94a3b8' />
       </span>
     </>
-  );
+  )
 }
