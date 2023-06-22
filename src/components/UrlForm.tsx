@@ -1,45 +1,45 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import SUI from 'short-unique-id';
-import { object, string } from 'yup';
-import { UrlData } from '../context/UrlContext.d';
-import { useUrl } from '../hooks/useUrl';
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import SUI from 'short-unique-id'
+import { object, string } from 'yup'
+import { UrlData } from '../context/UrlContext.d'
+import { useUrl } from '../hooks/useUrl'
 
 interface FormValues {
-  url: string;
+  url: string
 }
 
 export default function UrlForm() {
-  const { newUrl, handleLoad, handleUrl, getUrl } = useUrl();
+  const { newUrl, handleLoad, handleUrl, getUrl } = useUrl()
 
-  const sui = new SUI({ length: 6 });
+  const sui = new SUI({ length: 6 })
 
-  const domain: string = import.meta.env.VITE_DOMAIN;
+  const domain: string = import.meta.env.VITE_DOMAIN
 
   const initialValues: FormValues = {
     url: '',
-  };
+  }
 
   const createUrl = object({
     url: string()
       .url('Invalid format')
       .required('Required')
       .typeError('Must be text'),
-  });
+  })
 
   const handleSubmit = async (values: FormValues) => {
-    handleLoad(true);
+    handleLoad(true)
 
-    const id: string = sui();
+    const id: string = sui()
 
-    const { status } = await newUrl({ id, ...values });
+    const { status } = await newUrl({ id, ...values })
 
     if (status === 201 /*created*/) {
-      const { data } = await getUrl<UrlData>(id);
-      handleUrl(domain + data.id);
+      const { data } = await getUrl<UrlData>(id)
+      handleUrl(domain + data?.id)
     }
 
-    handleLoad(false);
-  };
+    handleLoad(false)
+  }
 
   return (
     <Formik
@@ -73,5 +73,5 @@ export default function UrlForm() {
         </div>
       </Form>
     </Formik>
-  );
+  )
 }
