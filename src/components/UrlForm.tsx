@@ -9,7 +9,7 @@ interface FormValues {
 }
 
 export default function UrlForm() {
-  const { newUrl, handleLoad, handleUrl, getUrl } = useUrl()
+  const { newUrl, loadHandler, urlHandler, getUrl } = useUrl()
 
   const sui = new SUI({ length: 6 })
 
@@ -27,7 +27,7 @@ export default function UrlForm() {
   })
 
   const handleSubmit = async (values: FormValues) => {
-    handleLoad(true)
+    loadHandler(true)
 
     const id: string = sui()
 
@@ -35,10 +35,10 @@ export default function UrlForm() {
 
     if (status === 201 /*created*/) {
       const { data } = await getUrl<UrlData>(id)
-      handleUrl(domain + data?.id)
+      urlHandler(domain + data?.id)
     }
 
-    handleLoad(false)
+    loadHandler(false)
   }
 
   return (
