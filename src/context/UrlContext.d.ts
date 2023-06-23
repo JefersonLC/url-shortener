@@ -13,14 +13,16 @@ export interface UrlData {
 
 export interface ContextValues {
   newUrl: (values: NewUrl) => Promise<PostgrestSingleResponse<null>>
-  handleLoad: (state: boolean) => void
+  loadHandler: (state: boolean) => void
   getUrl: <Interface>(id: string) => Promise<{
     status: number
     data: Interface | null
   }>
-  handleUrl: (newUrl: string) => void
+  urlHandler: (newUrl: string) => void
   url: string
   isLoading: boolean
+  errorHandler: () => void
+  error: boolean
 }
 
 export interface ProviderProps {
