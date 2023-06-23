@@ -26,7 +26,7 @@ export default function UrlForm() {
       .typeError('Must be text'),
   })
 
-  const handleSubmit = async (values: FormValues) => {
+  const submitHandler = async (values: FormValues) => {
     loadHandler(true)
 
     const id: string = sui()
@@ -43,7 +43,7 @@ export default function UrlForm() {
 
   return (
     <Formik
-      onSubmit={handleSubmit}
+      onSubmit={submitHandler}
       initialValues={initialValues}
       validationSchema={createUrl}
     >
