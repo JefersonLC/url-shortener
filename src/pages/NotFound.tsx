@@ -9,7 +9,7 @@ export default function NotFound() {
     <main className='min-h-screen bg-slate-800 flex justify-center items-center'>
       <div className='flex flex-col gap-2 justify-center items-center [&>svg]:fill-slate-50'>
         <p className='text-center text-xl text-slate-50'>
-          Path <span className='text-emerald-400 font-mono'>"{location}"</span>{' '}
+          Path <span className='text-emerald-400 font-mono'>'{location}'</span>{' '}
           doesn't exist
         </p>
         <SadFace />
