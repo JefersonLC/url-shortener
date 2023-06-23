@@ -9,6 +9,7 @@ export const UrlContext = createContext<ContextValues>(null!)
 export default function UrlContextProvider(props: ProviderProps) {
   const [url, setUrl] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false)
 
   async function getUrl<Interface>(id: string) {
     const { data, status } = await supabase
@@ -24,17 +25,34 @@ export default function UrlContextProvider(props: ProviderProps) {
     return response
   }
 
-  function handleLoad(state: boolean) {
+  function loadHandler(state: boolean) {
     setIsLoading(state)
   }
 
-  function handleUrl(newUrl: string) {
+  function urlHandler(newUrl: string) {
     setUrl(newUrl)
+  }
+
+  function errorHandler() {
+    setError(true)
+
+    setTimeout(() => {
+      setError(false)
+    }, 4500)
   }
 
   return (
     <UrlContext.Provider
-      value={{ newUrl, handleLoad, getUrl, url, isLoading, handleUrl }}
+      value={{
+        newUrl,
+        loadHandler,
+        getUrl,
+        url,
+        isLoading,
+        urlHandler,
+        errorHandler,
+        error,
+      }}
     >
       {props.children}
     </UrlContext.Provider>
