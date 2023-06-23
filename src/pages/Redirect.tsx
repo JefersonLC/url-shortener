@@ -13,6 +13,7 @@ export default function About() {
 
   useEffect(() => {
     if (!params) return navigate('/')
+    
     ;(async () => {
       const { data } = await getUrl<UrlData>(params.id)
 
