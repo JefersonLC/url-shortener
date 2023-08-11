@@ -18,6 +18,7 @@ To run the application, follow these steps:
 - HTML
 - Tailwind
 - React (TypeScript)
+- Supabase
 
 ## Contributions
 
