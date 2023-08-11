@@ -22,4 +22,4 @@ To run the application, follow these steps:
 
 ## Contributions
 
-I appreciate contributions and suggestions to improve my portfolio website! If you have any ideas or encounter any issues, feel free to open an issue or submit a pull request.
+I appreciate contributions and suggestions to improve my application! If you have any ideas or encounter any issues, feel free to open an issue or submit a pull request.
