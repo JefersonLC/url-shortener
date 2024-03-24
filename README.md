@@ -1,25 +1,75 @@
-# URL Shortener
+# Nuxt 3 Minimal Starter
 
-This repository contains the source code and necessary files for url shortener website.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## How to Install and Run
+## Setup
 
-To run the application, follow these steps:
+Make sure to install the dependencies:
 
-1. Clone the repository or download it as a ZIP file.
-2. In a terminal, navigate to the folder where the application is located.
-3. (Optional) Install `pnpm` using the `npm install -g pnpm` command
-4. Run the `npm install` or `pnpm install` command to install all the necessary dependencies.
-5. Run the `npm run dev` or `pnpm run dev` command to start the application in development mode.
-6. Open your browser and navigate to `http://localhost:5173`.
+```bash
+# npm
+npm install
 
-## Technologies Used
+# pnpm
+pnpm install
 
-- HTML
-- Tailwind
-- React (TypeScript)
-- Supabase
+# yarn
+yarn install
 
-## Contributions
+# bun
+bun install
+```
 
-I appreciate contributions and suggestions to improve my application! If you have any ideas or encounter any issues, feel free to open an issue or submit a pull request.
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
