@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       domainName: 'http://localhost:3000/'
     }
   },
-  modules: ['@nuxtjs/supabase', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/supabase', '@nuxtjs/tailwindcss', '@nuxtjs/robots'],
   components: [
     {
       path: '~/components',
@@ -16,5 +16,13 @@ export default defineNuxtConfig({
   ],
   supabase: {
     redirect: false
+  },
+  robots: {
+    rules: [
+      { Comment: 'Como llegaste aqui? o.o' },
+      { BlankLine: true },
+      { UserAgent: '*' },
+      { Disallow: '/r' }
+    ]
   }
 })
