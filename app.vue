@@ -1,3 +1,11 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Linksy • Shorten your long links ☺',
+  author: 'https://github.com/JefersonLC',
+  description: 'Intuitive and easy-to-use URL shortener'
+})
+</script>
+
 <template>
   <div class="min-h-screen bg-slate-900 select-none">
     <header class="p-8 flex items-center">
