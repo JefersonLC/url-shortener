@@ -1,6 +1,11 @@
-# Nuxt 3 Minimal Starter
+# URL Shortener
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A simple URL shortener application developed using Nuxt and Supabase.
+
+## Technologies Used
+
+- [Nuxt](https://nuxt.com/) - Vue.js framework for building Vue.js applications.
+- [Supabase](https://supabase.com/) - Open Source Firebase alternative with realtime, Postgres-based, and easy to use.
 
 ## Setup
 
@@ -38,38 +43,6 @@ yarn dev
 bun run dev
 ```
 
-## Production
+## Contribution
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+If you'd like to contribute to this project, feel free to submit a pull request. Before doing so, be sure to create a separate branch for your changes.
