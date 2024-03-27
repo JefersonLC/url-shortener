@@ -4,8 +4,8 @@ A simple URL shortener application developed using Nuxt and Supabase.
 
 ## Technologies Used
 
-- [Nuxt](https://nuxt.com/) - Vue.js framework for building Vue.js applications.
-- [Supabase](https://supabase.com/) - Open Source Firebase alternative with realtime, Postgres-based, and easy to use.
+- [Nuxt](https://nuxt.com/) - Nuxt is a free and open-source framework with an intuitive and extendable way to create type-safe, performant and production-grade full-stack web applications and websites with Vue.js.
+- [Supabase](https://supabase.com/) - Supabase is an open source Firebase alternative with: Realtime subscriptions, Postgres database, Authentication, instant APIs, Edge Functions, Storage, and Vector embeddings.
 
 ## Setup
 
