@@ -17,7 +17,22 @@ export default defineEventHandler(async (event) => {
     .limit(1)
     .single()
 
+  const addVisit = async (data: {
+    created_at: string
+    id: string
+    url: string
+    visits: number
+  }) => {
+    await supabase
+      .from('short-links')
+      .update({
+        visits: data.visits + 1
+      })
+      .eq('id', id)
+
+    await sendRedirect(event, data.url, 200)
+  }
   return data
-    ? await sendRedirect(event, data.url, 200)
+    ? await addVisit(data)
     : await sendRedirect(event, 'http://localhost:3000', 200)
 })
