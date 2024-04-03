@@ -1,9 +1,22 @@
 <script setup lang="ts">
+import type { Database } from './types/supabase'
+
 useSeoMeta({
   title: 'Linksy • Shorten your long links ☺',
   author: 'https://github.com/JefersonLC',
-  description: 'Intuitive and easy-to-use URL shortener'
+  description:
+    'Linksy is an efficient and easy-to-use URL shortening service that streamlines your online experience'
 })
+
+// const supabase = useSupabaseClient<Database>()
+
+// async function getLinks() {
+//   return await supabase.from('short-links').select('*').order('visits', {
+//     ascending: false
+//   })
+// }
+
+// const links = await getLinks()
 </script>
 
 <template>
@@ -42,6 +55,7 @@ useSeoMeta({
       >
         <LinkInput />
       </section>
+      <section>xd</section>
     </main>
   </div>
 </template>
