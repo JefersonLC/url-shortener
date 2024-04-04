@@ -8,15 +8,24 @@ useSeoMeta({
     'Linksy is an efficient and easy-to-use URL shortening service that streamlines your online experience'
 })
 
-// const supabase = useSupabaseClient<Database>()
+const supabase = useSupabaseClient<Database>()
+const config = useRuntimeConfig()
 
-// async function getLinks() {
-//   return await supabase.from('short-links').select('*').order('visits', {
-//     ascending: false
-//   })
-// }
+async function getLinks() {
+  return await supabase.from('short-links').select('*').order('visits', {
+    ascending: false
+  })
+}
 
-// const links = await getLinks()
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString('en', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
+
+const { data: links } = await getLinks()
 </script>
 
 <template>
@@ -28,7 +37,7 @@ useSeoMeta({
         Linksy
       </h1>
     </header>
-    <main class="w-3/4 m-auto my-20">
+    <main class="w-10/12 m-auto my-20">
       <section class="text-center">
         <h3 class="text-5xl inline font-bold">
           <span
@@ -55,7 +64,28 @@ useSeoMeta({
       >
         <LinkInput />
       </section>
-      <section>xd</section>
+      <section v-if="links && links.length" class="mt-10">
+        <table
+          class="rounded-xl overflow-hidden text-sm border-separate border-spacing-y-1 text-slate-400 mx-auto"
+        >
+          <thead class="bg-slate-800 text-left">
+            <tr class="text-slate-300 [&>th]:p-4">
+              <th>Short Link</th>
+              <th>Original Link</th>
+              <th>Clicks</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody class="bg-slate-950 bg-opacity-20 text-left">
+            <tr v-for="link of links" class="[&>th]:p-4 [&>th]:font-medium">
+              <th>{{ config.public.domainName + 'r/' + link.id }}</th>
+              <th>{{ link.url }}</th>
+              <th>{{ link.visits }}</th>
+              <th>{{ formatDate(link.created_at) }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </main>
   </div>
 </template>
