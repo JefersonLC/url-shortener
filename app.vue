@@ -17,14 +17,6 @@ async function getLinks() {
   })
 }
 
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
 const { data: links } = await getLinks()
 </script>
 
@@ -76,9 +68,19 @@ const { data: links } = await getLinks()
               <th>Date</th>
             </tr>
           </thead>
-          <tbody class="bg-slate-950 bg-opacity-20 text-left">
+          <tbody class="bg-slate-950 bg-opacity-20 text-left select-text">
             <tr v-for="link of links" class="[&>th]:p-4 [&>th]:font-medium">
-              <th>{{ config.public.domainName + 'r/' + link.id }}</th>
+              <th class="flex gap-3 items-center">
+                {{ config.public.domainName + 'r/' + link.id }}
+                <button
+                  class="bg-slate-950 p-1 rounded-full text-slate-300 ring-1 ring-slate-300 hover:ring-slate-50 hover:text-slate-50"
+                  @click="
+                    copyToClipboard(config.public.domainName + 'r/' + link.id)
+                  "
+                >
+                  <CopyIcon />
+                </button>
+              </th>
               <th>{{ link.url }}</th>
               <th>{{ link.visits }}</th>
               <th>{{ formatDate(link.created_at) }}</th>
