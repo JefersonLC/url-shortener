@@ -3,11 +3,13 @@ import { Database } from '~/types/supabase'
 
 export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient<Database>(event)
+  const config = useRuntimeConfig()
 
   const id = getRouterParam(event, 'id')
+  const domain = config.public.domainName
 
   if (!id) {
-    return await sendRedirect(event, 'http://localhost:3000', 200)
+    return await sendRedirect(event, domain, 200)
   }
 
   const { data } = await supabase
@@ -32,7 +34,5 @@ export default defineEventHandler(async (event) => {
 
     await sendRedirect(event, data.url, 200)
   }
-  return data
-    ? await addVisit(data)
-    : await sendRedirect(event, 'http://localhost:3000', 200)
+  return data ? await addVisit(data) : await sendRedirect(event, domain, 200)
 })
