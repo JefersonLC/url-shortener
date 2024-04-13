@@ -44,12 +44,12 @@ const createShortLink = () => {
   }
 
   if (!error.value) {
-    const id = getRandomID()
+    const randomId = getRandomID()
 
-    toast.promise(getShortLink({ id, url: link.value }), {
+    toast.promise(getShortLink({ id: randomId, url: link.value }), {
       loading: 'Processing...',
-      success: ({ data: { id } }) => {
-        const shortedLink = config.public.domainName + 'r/' + id
+      success: ({ data }) => {
+        const shortedLink = config.public.domainName + 'r/' + data?.id
 
         navigator.clipboard.writeText(shortedLink)
 
@@ -64,22 +64,22 @@ const createShortLink = () => {
 <template>
   <Toaster position="top-center" theme="dark" richColors />
   <div
-    class="group inline-flex gap-1 w-[550px] bg-slate-800 rounded-full p-[2px] border-[3px] border-slate-600 text-slate-400 transition-colors delay-100 has-[:focus]:border-purple-600"
+    class="group inline-flex gap-1 w-[300px] sm:w-[400px] md:w-[550px] bg-slate-800 rounded-full p-[2px] border-[3px] border-slate-600 text-slate-400 transition-colors delay-100 has-[:focus]:border-purple-600"
   >
-    <span class="inline-block p-3">
+    <span class="inline-block p-2">
       <LinkIcon />
     </span>
     <input
       v-model="link"
       autocomplete="off"
-      class="placeholder:text-slate-400 bg-slate-800 p-2 flex-grow outline-none"
+      class="placeholder:text-slate-400 bg-slate-800 p-1 flex-grow outline-none text-sm sm:text-base"
       type="text"
       name="url"
       id="url"
       placeholder="Enter the link here"
     />
     <button
-      class="rounded-full py-3 px-5 bg-purple-600 hover:bg-purple-700 transition-colors delay-100"
+      class="text-sm rounded-full px-3 bg-purple-600 hover:bg-purple-700 transition-colors delay-100 sm:text-base md:py-3 md:px-5"
       @click="createShortLink()"
     >
       <span class="text-white font-bold">Shorten Now!</span>
