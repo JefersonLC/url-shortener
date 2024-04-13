@@ -1,4 +1,5 @@
 <script setup lang="ts">
+//@ts-ignore
 import type { Database } from './types/supabase'
 
 useSeoMeta({
@@ -29,7 +30,7 @@ const { data: links } = await getLinks()
         Linksy
       </h1>
     </header>
-    <main class="w-10/12 m-auto my-20">
+    <main class="w-10/12 m-auto py-20">
       <section class="text-center">
         <h3 class="text-5xl inline font-bold">
           <span
