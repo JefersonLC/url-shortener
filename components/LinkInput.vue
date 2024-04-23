@@ -1,32 +1,12 @@
 <script setup lang="ts">
 import { Toaster, toast } from 'vue-sonner'
-import type { Database } from '../types/supabase'
 
 const link = ref('')
 const error = ref(false)
 
-const supabase = useSupabaseClient<Database>()
+const { getShortLink } = useSupabase()
+
 const config = useRuntimeConfig()
-
-const getShortLink = async ({ id, url }: { id: string; url: string }) => {
-  const res = await supabase.from('short-links').insert({
-    id,
-    url
-  })
-
-  if (res.status === 201) {
-    const shortedLink = await supabase
-      .from('short-links')
-      .select('*')
-      .eq('id', id)
-      .limit(1)
-      .single()
-
-    return shortedLink
-  }
-
-  throw new Error('Unexpected error :(')
-}
 
 const createShortLink = () => {
   error.value = false
